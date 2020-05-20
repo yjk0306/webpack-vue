@@ -28,7 +28,7 @@ switch (process.env.NODE_ENV) {
 
 module.exports = {
 
-  entry:  path.resolve(__dirname, '../src/index.js'),
+  entry:  path.resolve(__dirname, '../src/main.js'),
 
   output: {
     filename: '[name].[hash].js',
