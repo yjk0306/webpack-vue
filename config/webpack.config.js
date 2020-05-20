@@ -4,27 +4,10 @@ const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const webpack = require('webpack');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const env = require('../env')
+const multiple  = require('./multiple')
 
-
-const arkenv = require('../env/ark.env')
-const devenv = require('../env/dev.env')
-const prodenv = require('../env/prod.env')
-
-let env = {}
-
-switch (process.env.NODE_ENV) {
-  case 'development' :
-    env = devenv
-    break;
-  case 'ark' :
-    env = arkenv
-    break;
-  case 'prod' :
-    env = prodenv
-    break;       
-}
-
-
+console.log(multiple)
 
 module.exports = {
 
@@ -108,6 +91,7 @@ module.exports = {
       title: 'Output Management',
       template:'public/index.html'
     }),
+
 
     new webpack.DefinePlugin({
       'process.env' : JSON.stringify(env)
