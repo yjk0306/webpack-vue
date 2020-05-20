@@ -65,9 +65,10 @@ module.exports = {
         test:/\.(js|.jsx)$/,
         loader:'babel-loader',
         options: {
-          plugins: ['syntax-dynamic-import']
+          plugins: ['syntax-dynamic-import'],
+          presets: ['env']
         },
-        exclude:/node_modules/,
+        exclude: /(node_modules|bower_components)/,
         include:/src/
       },
       {

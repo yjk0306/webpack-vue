@@ -10,12 +10,12 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 
 
 module.exports = merge(common, {
-  devtool: 'source-map',
+ 
   mode: 'production',
   plugins : [
     new UglifyJSPlugin(
       {
-        sourceMap: true
+        exclude:['/node_modules/'],  
       }
     ),
    // 开启 BundleAnalyzerPlugin
