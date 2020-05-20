@@ -34,7 +34,18 @@ module.exports = {
     filename: '[name].[hash].js',
     path: path.resolve(__dirname, '../dist')
   },
-
+  resolve: {
+    alias: {
+      // 写了这句，我们可以这样写代码 import Vue from 'vue', 并且引入的是vue/dist/vue.runtime.esm.js这个版本，不然默认引入的是vue.js。这个在github的vue官方仓库dist目录下有解释。
+      // 'vue$': 'vue/dist/vue.runtime.esm.js',
+      // 写了这句，我们可以这样写代码 import api from '@/api/api.js'，省去到处找路径定位到src的麻烦
+      '@': path.resolve(__dirname, '../src'),
+      '@template': path.resolve(__dirname, '../src/components')
+    },
+    // 添加一个 resolve.extensions 属性，方便我们引入依赖或者文件的时候可以省略后缀
+    // 我们在引入文件时可以这样写 import api from '@/api/api'。
+    extensions: ['*', '.js', '.vue']
+  },  
   module: {
     rules: [
       {
