@@ -1,9 +1,6 @@
 <template>
   <div>
-      {{message}}
-     
-
-      <img src="./img/banner.png" alt="">
+    <router-view></router-view>
   </div>
 </template>
 <script>
@@ -16,10 +13,7 @@ import utils  from './utils/index'
       } 
     },
     mounted () {
-      console.log(utils)
-
       let arr = utils.add([1,2,3])
-      console.log(arr)
     }
   }
 </script>

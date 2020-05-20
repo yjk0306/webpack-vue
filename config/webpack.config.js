@@ -12,8 +12,6 @@ const prodenv = require('../env/prod.env')
 
 let env = {}
 
-console.log(process.env.NODE_ENV)
-
 switch (process.env.NODE_ENV) {
   case 'development' :
     env = devenv
@@ -26,7 +24,7 @@ switch (process.env.NODE_ENV) {
     break;       
 }
 
-console.log(env)
+
 
 module.exports = {
 
@@ -34,7 +32,6 @@ module.exports = {
 
   output: {
     filename: '[name].[hash].js',
-  
     path: path.resolve(__dirname, '../dist')
   },
 
@@ -67,6 +64,9 @@ module.exports = {
       {
         test:/\.(js|.jsx)$/,
         loader:'babel-loader',
+        options: {
+          plugins: ['syntax-dynamic-import']
+        },
         exclude:/node_modules/,
         include:/src/
       },
@@ -90,21 +90,24 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
 
+   
+
     new HtmlWebpackPlugin({
       title: 'Output Management',
       template:'public/index.html'
     }),
+
     new webpack.DefinePlugin({
       'process.env' : JSON.stringify(env)
     }),
+    
     new VueLoaderPlugin(),
     
     new ExtractTextPlugin({
       filename : '[name].min.css'
     }),
-
     new webpack.NamedModulesPlugin(),
-
+   
     new webpack.HotModuleReplacementPlugin()
     ],
 
