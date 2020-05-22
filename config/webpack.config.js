@@ -8,15 +8,26 @@ const env = require('../env')
 const multiple  = require('./multiple')
 
 console.log(multiple)
+const entry = {};
+
+multiple.pages.forEach((value, index) => {
+  entry[value.page] = value.entry;
+})
+
+console.log(entry)
 
 module.exports = {
 
-  entry:  path.resolve(__dirname, '../src/main.js'),
-
+  // entry:  path.resolve(__dirname, '../src/main.js'),
+  entry: entry,
+  
   output: {
-    filename: '[name].[hash].js',
+    path:  'dist/js',
+    filename: "[name]/[name].js",
+    chunkFilename: "[name]/[name].js",
     path: path.resolve(__dirname, '../dist')
   },
+
   resolve: {
     alias: {
       // 写了这句，我们可以这样写代码 import Vue from 'vue', 并且引入的是vue/dist/vue.runtime.esm.js这个版本，不然默认引入的是vue.js。这个在github的vue官方仓库dist目录下有解释。
@@ -86,11 +97,32 @@ module.exports = {
     new CleanWebpackPlugin(),
 
    
+// 单页面  start
+    // new HtmlWebpackPlugin({
+    //   title: 'Output Management',
+    //   template:'public/index.html'
+    // }),
+// 单页面 end
 
+// 多页面 start
     new HtmlWebpackPlugin({
-      title: 'Output Management',
-      template:'public/index.html'
+      title: 'page1',
+      filename: path.resolve(__dirname, '../dist/page1/index.html'),
+      template: path.resolve(__dirname, '../project/page1/index.html'),
+      chunks:['page1'], // 这里应该就可以找到 modA/modA.js 
+      inject:true,
+      hash:true
     }),
+    
+    new HtmlWebpackPlugin({
+      title: 'page2',
+      filename: path.resolve(__dirname, '../dist/page2/index.html'),
+      template: path.resolve(__dirname, '../project/page2/index.html'),
+      chunks:['page2'], // 这里应该就可以找到 modA/modA.js 
+      inject:true,
+      hash:true
+    }),
+//  多页面 end 
 
 
     new webpack.DefinePlugin({
