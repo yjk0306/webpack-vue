@@ -1,14 +1,13 @@
-import Router from 'vue-router'
+import VueRouter from 'vue-router'
 import Vue from 'vue'
 import index from '../page/index.vue'
-Vue.use(Router)
+Vue.use(VueRouter)
 
-
-const router = new Router({
+const router = new VueRouter({
   mode: 'hash',
   routes:[
     {
-      path: '/index',
+      path: '/',
       component : () => import('../page/index.vue')
     }
   ]

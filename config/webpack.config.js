@@ -4,6 +4,7 @@ const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const webpack = require('webpack');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const WebpackBar = require('webpackbar');
 
 
 const arkenv = require('../env/ark.env')
@@ -25,7 +26,6 @@ switch (process.env.NODE_ENV) {
 }
 
 
-
 module.exports = {
 
   entry:  path.resolve(__dirname, '../src/main.js'),
@@ -34,7 +34,12 @@ module.exports = {
     filename: '[name].[hash].js',
     path: path.resolve(__dirname, '../dist')
   },
-
+  resolve: {
+    extensions: [".js", ".vue"] ,
+    alias: {
+      "@" : path.resolve(__dirname, '../src')
+    }
+  },
   module: {
     rules: [
       {
@@ -88,13 +93,16 @@ module.exports = {
   },   
 
   plugins: [
+    // 添加 进度条
+    new WebpackBar(),
+
     new CleanWebpackPlugin(),
 
    
 
     new HtmlWebpackPlugin({
       title: 'Output Management',
-      template:'public/index.html'
+      template: process.env.NODE_ENV=='development'?'public/index-dev.html':'public/index.html'
     }),
 
     new webpack.DefinePlugin({

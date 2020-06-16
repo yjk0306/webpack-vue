@@ -12,13 +12,19 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 module.exports = merge(common, {
   devtool: 'source-map',
   mode: 'production',
+  externals: {
+    'element-ui' : 'ELEMENT',
+    'vue': 'Vue',
+    'vue-router': 'VueRouter',
+    'lodash': '_'
+  },
   plugins : [
-    new UglifyJSPlugin(
-      {
-        sourceMap: true
-      }
-    ),
+    // new UglifyJSPlugin(
+    //   {
+    //     sourceMap: true
+    //   }
+    // ),
    // 开启 BundleAnalyzerPlugin
-    // new BundleAnalyzerPlugin(),
+    new BundleAnalyzerPlugin(),
   ]
 })
