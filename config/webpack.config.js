@@ -105,6 +105,7 @@ module.exports = {
       template: process.env.NODE_ENV=='development'?'public/index-dev.html':'public/index.html'
     }),
 
+
     new webpack.DefinePlugin({
       'process.env' : JSON.stringify(env)
     }),
