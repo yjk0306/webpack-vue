@@ -18,10 +18,8 @@ export default {
     };
   },
   created() {
-    console.log(this.$listeners)
    },
   mounted() {
-    console.log(this.$attrs)
    },
   computed: {},
    watch: {},

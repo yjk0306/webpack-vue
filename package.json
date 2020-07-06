@@ -37,6 +37,7 @@
     "webpackbar": "^4.0.0"
   },
   "dependencies": {
+    "axios": "^0.19.2",
     "element-ui": "^2.13.2",
     "loadsh": "^0.0.4",
     "lodash": "^4.17.15",

@@ -7,7 +7,8 @@ import router from './router'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css';
 Vue.use(ElementUI);
-
+import Dialog from './plugin/dialog'
+Vue.use(Dialog)
 
 new Vue ({
   el: '#app', // 挂载到index.html中的#app上
