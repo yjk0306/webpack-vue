@@ -9,6 +9,7 @@
     "build:ark": "cross-env NODE_ENV=ark webpack --config config/webpack.prod.js",
     "build": "cross-env NODE_ENV=prod webpack --config config/webpack.prod.js"
   },
+  "homepage": "https://yjk0306.github.io/webpack-vue",
   "author": "",
   "license": "ISC",
   "devDependencies": {
