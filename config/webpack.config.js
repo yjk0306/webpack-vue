@@ -18,8 +18,8 @@ console.log(entry)
 
 module.exports = {
 
-  // entry:  path.resolve(__dirname, '../src/main.js'),
-  entry: entry,
+  entry:  path.resolve(__dirname, '../src/main.js'),
+  // entry: entry,
   
   output: {
     path:  'dist/js',
@@ -98,30 +98,30 @@ module.exports = {
 
    
 // 单页面  start
-    // new HtmlWebpackPlugin({
-    //   title: 'Output Management',
-    //   template:'public/index.html'
-    // }),
+    new HtmlWebpackPlugin({
+      title: 'Output Management',
+      template:'public/index.html'
+    }),
 // 单页面 end
 
 // 多页面 start
-    new HtmlWebpackPlugin({
-      title: 'page1',
-      filename: path.resolve(__dirname, '../dist/page1/index.html'),
-      template: path.resolve(__dirname, '../project/page1/index.html'),
-      chunks:['page1'], // 这里应该就可以找到 modA/modA.js 
-      inject:true,
-      hash:true
-    }),
+    // new HtmlWebpackPlugin({
+    //   title: 'page1',
+    //   filename: path.resolve(__dirname, '../dist/page1/index.html'),
+    //   template: path.resolve(__dirname, '../project/page1/index.html'),
+    //   chunks:['page1'], // 这里应该就可以找到 modA/modA.js 
+    //   inject:true,
+    //   hash:true
+    // }),
     
-    new HtmlWebpackPlugin({
-      title: 'page2',
-      filename: path.resolve(__dirname, '../dist/page2/index.html'),
-      template: path.resolve(__dirname, '../project/page2/index.html'),
-      chunks:['page2'], // 这里应该就可以找到 modA/modA.js 
-      inject:true,
-      hash:true
-    }),
+    // new HtmlWebpackPlugin({
+    //   title: 'page2',
+    //   filename: path.resolve(__dirname, '../dist/page2/index.html'),
+    //   template: path.resolve(__dirname, '../project/page2/index.html'),
+    //   chunks:['page2'], // 这里应该就可以找到 modA/modA.js 
+    //   inject:true,
+    //   hash:true
+    // }),
 //  多页面 end 
 
 

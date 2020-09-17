@@ -1,6 +1,5 @@
 import Router from 'vue-router'
 import Vue from 'vue'
-import index from '../page/index.vue'
 Vue.use(Router)
 
 
@@ -9,7 +8,7 @@ const router = new Router({
   routes:[
     {
       path: '/index',
-      component : () => import('../page/index.vue')
+      component : () => import('../view/index.vue')
     }
   ]
 })

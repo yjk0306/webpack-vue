@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>index</h1>
+    <h1>{{title}}</h1>
     <Hello />
     <img src="../img/banner.png" alt="">
   </div>
@@ -8,9 +8,19 @@
 <script>
 import Hello from '@template/hello'
 export default {
+  data () {
+    return {
+      title: 'index'
+    }
+  },
     components:{
       Hello
-    }
+    },
+    // data () {
+    //   return {
+    //     // name: 'hello  vue'
+    //   }
+    // }
 }
 </script>
 <style  scoped>
